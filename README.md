@@ -1,4 +1,7 @@
 # httpwn
 Tool for stress testing web applications
 
-! For research purposes only !
+## Usage:
+./httpwn.py -h
+
+For research purposes only 
