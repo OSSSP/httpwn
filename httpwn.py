@@ -64,13 +64,3 @@ if not options['omit_test']:
 sender.attack()
 
 exit(0)
-
-"""
-STAT = Lichman, vrtkova, Beloch, !Pribylova
-NAVY = Tomazs (v stredu)
-
-PO ==== 7:15 - 8:45 BvK PR === 9:00 - 10:30 IT PR
-UT ==== 9:00 - 10:30 POU PR === 10:45 - 12:15 SUS PR === 14:15 - 15:45 NAVY PR
-ST === NAVY Cviko Tomasz
-CT ==== 9:00 - 10:30 Krypto PR === 14:15 - 16:45 Stat PR
-"""
