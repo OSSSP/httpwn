@@ -36,16 +36,29 @@ class RqGen:
             'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Accept-Language: en-US;q=0.5,en;q=0.5',
             'Accept-Encoding: gzip, deflate',
-            'Content-Length: {BODYLEN}'
             'Connection: close',
-            '' # for terminating CRLF
         ]
 
+    def get_rand_UA(self):
+        return RqGen.USER_AGENTS[random.randint(0, len(RqGen.USER_AGENTS) - 1)] if self.spoofUA else RqGen.USER_AGENTS[0]
+
+    def gen_body(self):
+        return "X" * self.bodylen
+
     def payload(self):
+        body = self.gen_body()
+
         http_string = ''
         for rqline in self.HTTP_REQUEST:
             http_string += rqline + self.CRLF
-        http_string = http_string.format(UA=RqGen.USER_AGENTS[random.randint(0, len(RqGen.USER_AGENTS) - 1)] if self.spoofUA else RqGen.USER_AGENTS[0])
+
+        if self.bodylen:
+            http_string += 'Content-Length: {BODYLEN}'.format(BODYLEN=len(body.encode())) + self.CRLF
+
+        http_string = http_string.format(UA=self.get_rand_UA()) + self.CRLF
+
+        if self.bodylen:
+            http_string = http_string + body
+
         Logger.debug('\n' + http_string)
-        http_string = http_string + 'su ja ne vudce pico'
         return http_string

@@ -96,7 +96,7 @@ class Sender:
 
     def attack_job(self):
         while not self.stopped and (len(self.attackers) or len(self.pending_sockets)):
-            Logger.info('Job status: {} attackers, {} pending'.format(len(self.attackers), len(self.pending_sockets)))
+            #Logger.info('Job status: {} attackers, {} pending'.format(len(self.attackers), len(self.pending_sockets)))
             for attacker in self.attackers:
                 if attacker.is_done:
                     if attacker.killed_prematurely:
