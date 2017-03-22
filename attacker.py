@@ -8,6 +8,7 @@ class Attacker:
         self.chunk_size = chunk_size
         self.is_done = False
         self.killed_prematurely = False
+        Logger.debug(payload)
 
     def execute_step(self):
             chunk = self.get_chunk()
@@ -16,8 +17,8 @@ class Attacker:
                 self.socket.send(encoded_chunk)
                 if len(chunk) < self.chunk_size:
                     self.is_done = True
-                    Logger.debug(self.socket.recv(1024))
-                    self.socket.close();
+                    #Logger.debug(self.socket.recv(1024))
+                    self.socket.close()
             except:
                 self.is_done = True
                 self.socket.close()

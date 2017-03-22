@@ -109,11 +109,14 @@ class Sender:
             time.sleep(self.options['chunk_delay'] / 1000)
 
             if not len(self.attackers):
-                time.sleep(0.001) # dont burn processor if there are no attackers provided yet
+                time.sleep(0.001)  # don't burn processor if there are no attackers provided yet
 
     def print_stats(self):
-        Logger.log("Attack summary:\n      Successful requests: {}\n      Killed by remoted host: {}\n      Pending connections: {}\n      Refused connections: {}"
-            .format(self.stats['successful'], self.stats['killed'], self.stats['pending'], self.stats['refused']))
+        Logger.log('Attack summary:\n      Successful requests: {}\n      Killed by remoted host: {}\n      '
+                   'Pending connections: {}\n      Refused connections: {} '.format(self.stats['successful'],
+                                                                                    self.stats['killed'],
+                                                                                    self.stats['pending'],
+                                                                                    self.stats['refused']))
 
 
 
